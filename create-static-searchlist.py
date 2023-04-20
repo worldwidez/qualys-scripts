@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 QUALYS_API_USERNAME = 'your_username'
 QUALYS_API_PASSWORD = 'your_password'
 # Update the base URL for the QG3 pod
-QUALYS_BASE_URL = 'https://qualysguard.qg3.apps.qualys.com/api/2.0/fo/'
+QUALYS_BASE_URL = 'https://qualysguard.***.apps.qualys.com/api/2.0/fo/'
 
 def create_qid_search_list(name, qid_list):
     url = f"{QUALYS_BASE_URL}qid/search_list/static/"
