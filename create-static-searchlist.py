@@ -1,3 +1,8 @@
+#python3 qualys-sl.py
+#Enter the search list title: accvulns12341SL
+#Enter the QIDs to add, separated by commas: 90007, 105170
+#Created global QID-based search list 'accvulns12341SL' with ID 9137995 and QIDs: 90007,105170
+
 import requests
 from requests.auth import HTTPBasicAuth
 import xml.etree.ElementTree as ET
