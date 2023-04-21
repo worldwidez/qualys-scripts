@@ -3,60 +3,70 @@ from requests.auth import HTTPBasicAuth
 import xml.etree.ElementTree as ET
 
 # Replace these with your Qualys API credentials
-QUALYS_API_USERNAME = '#####'
-QUALYS_API_PASSWORD = '#####'
+username = '#####'
+password = '#####'
 
 # Update the base URL for the QG3 pod
-QUALYS_BASE_URL = 'https://qualysguard.qg3.apps.qualys.com/api/2.0/fo/'
+QUALYS_BASE_URL = 'https://qualysguard.###.apps.qualys.com/api/2.0/fo/report/template/scan/'
 
-def create_scan_report_template(name, past_detections=2, asset_groups='all', cloud_agent_tag='All Cloud Agents'):
-    url = f"{QUALYS_BASE_URL}report/template/scan/"
+# Add the action and report_format parameters to the URL
+url = QUALYS_BASE_URL + "?action=create&report_format=csv"
 
-    headers = {
-        'Content-Type': 'application/xml',
-        'X-Requested-With': 'Python Script',  # Add a description for the X-Requested-With header
-    }
+# Set the headers
+headers = {
+    'Content-Type': 'application/xml',
+    'X-Requested-With': 'Python requests'
+}
 
-    data = f"""
-    <ServiceRequest>
-        <data>
-            <ReportTemplate>
-                <name>{name}</name>
-                <description></description>
-                <type>Scan</type>
-                <format>CSV</format>
-                <action>create</action>
-                <past_detections>{past_detections}</past_detections>
-                <asset_groups>{asset_groups}</asset_groups>
-                <cloud_agent_tag>{cloud_agent_tag}</cloud_agent_tag>
-            </ReportTemplate>
-        </data>
-    </ServiceRequest>
-    """
+# Define the XML payload for creating the report scan template
+xml_payload = """
+<REPORT_TEMPLATE>
+  <TITLE>Api Created Report Scan Template</TITLE>
+  <TEMPLATE_TYPE>Scan</TEMPLATE_TYPE>
+  <OUTPUT_FORMAT>csv</OUTPUT_FORMAT>
+  <REPORT_DETAILS>
+    <DISPLAY>Default</DISPLAY>
+    <FILTER>
+      <SEVERITY>
+        <CONFIRMED>2-5</CONFIRMED>
+        <POTENTIAL>2-5</POTENTIAL>
+      </SEVERITY>
+      <DETECTION>
+        <NEW_PREV>2</NEW_PREV>
+      </DETECTION>
+    </FILTER>
+    <ASSET_GROUPS>all</ASSET_GROUPS>
+    <CLOUD_AGENTS>all</CLOUD_AGENTS>
+    <AGENT_DATA>true</AGENT_DATA>
+    <SCAN_DATA>true</SCAN_DATA>
+    <DETAILED_RESULTS>
+      <TEXT_SUMMARY>true</TEXT_SUMMARY>
+      <VULNERABILITY_DETAILS>true</VULNERABILITY_DETAILS>
+      <THREAT>true</THREAT>
+      <IMPACT>true</IMPACT>
+      <SOLUTION>true</SOLUTION>
+      <PATCHES_AND_WORKAROUNDS>true</PATCHES_AND_WORKAROUNDS>
+      <VIRTUAL_PATCHES>true</VIRTUAL_PATCHES>
+      <MITIGATING_CONTROLS>true</MITIGATING_CONTROLS>
+      <COMPLIANCE>true</COMPLIANCE>
+      <EXPLOITABILITY>true</EXPLOITABILITY>
+      <ASSOCIATED_MALWARE>true</ASSOCIATED_MALWARE>
+      <RESULTS>true</RESULTS>
+      <REOPENED>true</REOPENED>
+    </DETAILED_RESULTS>
+  </REPORT_DETAILS>
+  <TARGET>
+    <HOST_BASED>true</HOST_BASED>
+  </TARGET>
+</REPORT_TEMPLATE>
+"""
 
-    response = requests.post(
-        url,
-        headers=headers,
-        data=data,
-        auth=HTTPBasicAuth(QUALYS_API_USERNAME, QUALYS_API_PASSWORD)
-    )
+# Make the API request
+response = requests.post(url, headers=headers, data=xml_payload, auth=HTTPBasicAuth(username, password))
 
-    if response.status_code == 200:
-        xml_root = ET.fromstring(response.text)
-        if xml_root.find('.//RESPONSE/CODE') is not None:
-            error_code = xml_root.findtext('.//RESPONSE/CODE')
-            error_msg = xml_root.findtext('.//RESPONSE/TEXT')
-            print(f"Error creating scan report template: {error_code} - {error_msg}")
-        else:
-            template_id = xml_root.findtext('.//RESPONSE/ITEM_LIST/ITEM/VALUE')
-            print(f"Created scan report template '{name}' with ID {template_id}")
-    else:
-        print(f"Error creating scan report template: {response.status_code} - {response.text}")
-
-if __name__ == "__main__":
-    report_template_name = "bv general vulnerability report"
-    past_detections = 2
-    asset_groups = "all"
-    cloud_agent_tag = "All Cloud Agents"
-
-    create_scan_report_template(report_template_name, past_detections, asset_groups, cloud_agent_tag)
+# Check the response status
+if response.status_code == 200:
+    print('Report scan template created successfully!')
+else:
+    print(f'Error creating report scan template. Status code: {response.status_code}')
+    print(response.text)
