@@ -1,11 +1,8 @@
-powershell_script 'Uninstall Qualys Agents' do
+powershell_script 'Uninstall Qualys Agent' do
   code <<-EOH
-    # Get all Qualys agents installed on the system
-    $qualys_agents = Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*Qualys*"}
-
-    # Uninstall all Qualys agents
+    $qualys_agents = Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*Qualys Agent*"}
     foreach ($agent in $qualys_agents) {
-        $agent.Uninstall()
+      $agent.Uninstall()
     }
   EOH
 end
