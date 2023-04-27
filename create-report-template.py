@@ -3,14 +3,14 @@ from requests.auth import HTTPBasicAuth
 import xml.etree.ElementTree as ET
 
 # Replace these with your Qualys API credentials
-username = '#####'
-password = '#####'
+username = '******'
+password = '******'
 
 # Update the base URL for the QG3 pod
-QUALYS_BASE_URL = 'https://qualysguard.###.apps.qualys.com/api/2.0/fo/report/template/scan/'
+QUALYS_BASE_URL = 'https://qualysguard.qg3.apps.qualys.com/api/2.0/fo/report/template/scan/'
 
 # Add the action and report_format parameters to the URL
-url = QUALYS_BASE_URL + "?action=create&report_format=csv"
+url = QUALYS_BASE_URL + "?action=create&report_format=xml"
 
 # Set the headers
 headers = {
@@ -21,7 +21,7 @@ headers = {
 # Define the XML payload for creating the report scan template
 xml_payload = """
 <REPORT_TEMPLATE>
-  <TITLE>Api Created Report Scan Template</TITLE>
+  <TITLE>ZP's New Report Scan Template</TITLE>
   <TEMPLATE_TYPE>Scan</TEMPLATE_TYPE>
   <OUTPUT_FORMAT>csv</OUTPUT_FORMAT>
   <REPORT_DETAILS>
