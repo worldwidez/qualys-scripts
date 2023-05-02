@@ -1,0 +1,26 @@
+<FILTER>
+      <INFO key="selective_vulns"><![CDATA[complete]]></INFO>
+      <INFO key="search_list_ids"><![CDATA[]]></INFO>
+      <INFO key="exclude_qid_option"><![CDATA[0]]></INFO>
+      <INFO key="exclude_search_list_ids"><![CDATA[]]></INFO>
+      <INFO key="included_os"><![CDATA[ALL]]></INFO>
+      <INFO key="status_new"><![CDATA[1]]></INFO>
+      <INFO key="status_active"><![CDATA[1]]></INFO>
+      <INFO key="status_reopen"><![CDATA[1]]></INFO>
+      <INFO key="status_fixed"><![CDATA[0]]></INFO>
+      <INFO key="vuln_active"><![CDATA[1]]></INFO>
+      <INFO key="vuln_disabled"><![CDATA[0]]></INFO>
+      <INFO key="vuln_ignored"><![CDATA[0]]></INFO>
+      <INFO key="potential_active"><![CDATA[0]]></INFO>
+      <INFO key="potential_disabled"><![CDATA[0]]></INFO>
+      <INFO key="potential_ignored"><![CDATA[0]]></INFO>
+      <INFO key="ig_active"><![CDATA[0]]></INFO>
+      <INFO key="ig_disabled"><![CDATA[0]]></INFO>
+      <INFO key="ig_ignored"><![CDATA[0]]></INFO>
+      <INFO key="display_non_running_kernels"><![CDATA[0]]></INFO>
+      <INFO key="exclude_non_running_kernel"><![CDATA[0]]></INFO>
+      <INFO key="exclude_non_running_services"><![CDATA[0]]></INFO>
+      <INFO key="exclude_superceded_patches"><![CDATA[1]]></INFO>
+      <INFO key="exclude_qids_not_exploitable_due_to_configuration"><![CDATA[0]]></INFO>
+      <INFO key="categories_list"><![CDATA[ALL]]></INFO>
+    </FILTER>
