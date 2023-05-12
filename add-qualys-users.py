@@ -95,3 +95,9 @@ def process_csv_file(csv_file_path):
 # Example usage
 csv_file_path = "users.csv"  # Replace with the path to your CSV file
 process_csv_file(csv_file_path)
+
+# you need to create a users.csv file with a list of users to add during the api call
+# below is an example of that csv input
+#user_role,first_name,last_name,email,business_unit,phone,title,address1,city,country,state,zip_code
+#manager,John,Doe,johndoe@gmail.com,Unassigned,555-555-5555,Security Consultant,123 Main St,New York,United States of America,New York,10001
+#manager,Jane,Doe,janedoe@gmail.com,Unassigned,555-555-5556,Security Consultant, 123 Main, NYC, United States of America, New York, 10001
