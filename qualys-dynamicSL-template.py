@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 from requests.auth import HTTPBasicAuth
 from getpass import getpass
 
-QUALYS_BASE_URL = 'https://qualysapi.qg3.apps.qualys.com/api/2.0/fo/'
+QUALYS_BASE_URL = 'https://qualysapi.qg#.apps.qualys.com/api/2.0/fo/'
 
 def create_report_template(search_list_id, qualys_api_username, qualys_api_password):
     url = QUALYS_BASE_URL + "report/template/scan/?action=create&report_format=xml"
