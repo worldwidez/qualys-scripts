@@ -3,7 +3,7 @@ import requests
 from xml.etree import ElementTree
 import getpass
 
-QUALYS_API_BASE_URL = "https://qualysapi.qg3.apps.qualys.com/msp/user.php"
+QUALYS_API_BASE_URL = "https://qualysapi.qg#.apps.qualys.com/msp/user.php"
 API_USERNAME = input("Enter your API username: ")
 API_PASSWORD = getpass.getpass("Enter your API password: ")
 
