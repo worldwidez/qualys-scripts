@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 from requests.auth import HTTPBasicAuth
 
 # Update the base URL for the QG3 pod
-QUALYS_BASE_URL = 'https://qualysapi.qg3.apps.qualys.com/api/2.0/fo/'
+QUALYS_BASE_URL = 'https://qualysapi.qg#.apps.qualys.com/api/2.0/fo/'
 
 # Set your Qualys API username and password
 QUALYS_API_USERNAME = 'your_username'
